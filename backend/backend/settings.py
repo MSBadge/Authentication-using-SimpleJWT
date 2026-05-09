@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0y&b8u9$c&#ap#z)4zh^s=$y6q7lel3cp^bjt$a(l+5sy2ww5-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['viaduct.proxy.rlwy.net']
 
 
 # Application definition
@@ -81,10 +81,15 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'aTRtmyaNUVYVpfbwANsMuCyXzPQrtrNR',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '31624',
     }
 }
+#   postgresql://postgres:aTRtmyaNUVYVpfbwANsMuCyXzPQrtrNR@viaduct.proxy.rlwy.net:31624/railway
 
 
 # Password validation

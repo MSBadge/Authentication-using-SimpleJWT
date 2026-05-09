@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { loginUser, saveTokens } from '../api/UserAPI'
+import { loginUser, saveLoggedInUser, saveTokens } from '../api/UserAPI'
 
 export const Login = () => {
 
@@ -26,6 +26,7 @@ export const Login = () => {
     try {
       const res = await loginUser(formData)
       saveTokens(res.data)
+      saveLoggedInUser(formData.username)
       
       navigate('/')
     } catch (error) {

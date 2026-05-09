@@ -7,10 +7,10 @@ class RegisterSerializer(HyperlinkedModelSerializer):
         model = User
         fields = ['id', 'url', 'username', 'password', 'created_at']
 
-    # def create(self, validated_data):
-    #     user = User.objects.create_user(
-    #         username = validated_data['username'],
-    #         password = validated_data['password']
-    #     )
-    #     return user
+    def create(self, validated_data):
+        user = User.objects.create_user(
+            username = validated_data['username'],
+            password = validated_data['password']
+        )
+        return user
 

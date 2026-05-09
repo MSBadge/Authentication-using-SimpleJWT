@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
-import { listStu } from "../api/StuAPI"
+import { deletStu, listStu } from "../api/StuAPI"
+import { Post } from "./Post"
+import { Update } from "./Update"
 
 export const Dashboard = () => {
 
   const [getlist, setData] = useState([])
+  const [selectedStudent, setSelectedStudent] = useState(null)
 
   const getAllData = async () => {
     try {
@@ -18,8 +21,29 @@ export const Dashboard = () => {
     getAllData()
   },[])
 
+  // Delete Post function
+  const handleDeletePost = async (id) => {
+    await deletStu(id)
+    alert('Student deleted.')
+
+    const updataStu = getlist.filter((current) => {
+      return current.id !== id
+    })
+    setData(updataStu)
+  }
+
+  const handleEditClick = (stu) => {
+    setSelectedStudent(stu)
+  }
+
   return (
     <>
+    <Post onStuAdd={getAllData}/>
+    <Update 
+      selectedStudent = {selectedStudent}
+      onUpdate = {getAllData}
+      onCancle = {()=>setSelectedStudent(null)}
+    />
     <div className='flex justify-center'>
     <table className='w-2xl text-center'>
         <caption>Student List</caption>

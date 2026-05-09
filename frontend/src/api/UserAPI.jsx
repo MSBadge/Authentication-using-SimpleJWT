@@ -35,9 +35,18 @@ export const saveTokens = ({ access, refresh }) => {
   localStorage.setItem('refresh', refresh)
 }
 
+export const saveLoggedInUser = (username) => {
+  localStorage.setItem('username', username)
+}
+
+export const getLoggedInUser = () => {
+  return localStorage.getItem('username')
+}
+
 export const logoutUser = () => {
   localStorage.removeItem('access')
   localStorage.removeItem('refresh')
+  localStorage.removeItem('username')
 }
 
 export const isLoggedIn = () => {

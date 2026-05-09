@@ -12,6 +12,22 @@ stuAPI.interceptors.request.use((config) => {
   return config;
 });
 
+// List ALl Data
 export const listStu = () => {
     return stuAPI.get('/student/')
+}
+
+// Delete Single Data
+export const deletStu = (id) => {
+  return stuAPI.delete(`/student/${id}/`)
+}
+
+// Post Data
+export const postStu = (formData) => {
+  return stuAPI.post('/student/',formData)
+}
+
+// Updata Single Data
+export const updateStu = (id, formData) => {
+  return stuAPI.put(`/student/${id}/`, formData)
 }
